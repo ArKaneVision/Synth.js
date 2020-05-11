@@ -1,61 +1,61 @@
 import React from 'react'
-import WhiteKey from './WhiteKey'
-import BlackKey from './BlackKey'
+import Natural from './Natural'
+import Sharp from './Sharp'
+import Roll from '../../shared/Roll'
 
 const Octave = ({ playNote, oct }) => {
   return (
-    <div>
-      {/* 7 white keys */}
-      <WhiteKey
+    <Roll>
+      {/* 12 keys */}
+      <Natural
         note={`C${oct}`}
         playNote={playNote}
       />
-      <WhiteKey
-        note={`D${oct}`}
-        playNote={playNote}
-      />
-      <WhiteKey
-        note={`E${oct}`}
-        playNote={playNote}
-      />
-      <WhiteKey
-        note={`F${oct}`}
-        playNote={playNote}
-      />
-      <WhiteKey
-        note={`G${oct}`}
-        playNote={playNote}
-      />
-      <WhiteKey
-        note={`A${oct}`}
-        playNote={playNote}
-      />
-      <WhiteKey
-        note={`B${oct}`}
-        playNote={playNote}
-      />
-      {/* 5 black keys */}
-      <BlackKey
+      <Sharp
         note={`C#${oct}`}
         playNote={playNote}
       />
-      <BlackKey
+      <Natural
+        note={`D${oct}`}
+        playNote={playNote}
+      />
+      <Sharp
         note={`D#${oct}`}
         playNote={playNote}
       />
-      <BlackKey
+      <Natural
+        note={`E${oct}`}
+        playNote={playNote}
+      />
+      <Natural
+        note={`F${oct}`}
+        playNote={playNote}
+      />
+      <Sharp
         note={`F#${oct}`}
         playNote={playNote}
       />
-      <BlackKey
+      <Natural
+        note={`G${oct}`}
+        playNote={playNote}
+      />
+      <Sharp
         note={`G#${oct}`}
         playNote={playNote}
       />
-      <BlackKey
+      <Natural
+        note={`A${oct}`}
+        playNote={playNote}
+      />
+      <Sharp
         note={`A#${oct}`}
         playNote={playNote}
       />
-    </div>
+      <Natural
+        note={`B${oct}`}
+        playNote={playNote}
+      />
+    </Roll>
   )
 }
 

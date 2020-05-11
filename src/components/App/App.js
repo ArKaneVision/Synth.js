@@ -42,7 +42,7 @@ class App extends Component {
             message={msgAlert.message}
           />
         ))}
-        <main className="container">
+        <main>
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
@@ -55,7 +55,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/synth' render={() => (
+          <Route user={user} path='/synth' render={() => (
             <SynthBody user={user} />
           )} />
         </main>
