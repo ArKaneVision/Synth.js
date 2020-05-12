@@ -1,13 +1,11 @@
 import React from 'react'
 import BlackKey from '../../shared/BlackKey'
 
-const Sharp = ({ playNote, note }) => {
+const Sharp = ({ playNote, note, theme }) => {
   return (
     <BlackKey
-      onClick={() => {
-        console.log('test')
-        playNote(note)
-      }}
+      theme={theme}
+      onClick={() => playNote(note)}
     >
       {note}
     </BlackKey>

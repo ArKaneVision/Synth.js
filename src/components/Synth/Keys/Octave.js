@@ -12,6 +12,7 @@ const Octave = ({ playNote, oct }) => {
         playNote={playNote}
       />
       <Sharp
+        theme={{ offset: '11%' }}
         note={`C#${oct}`}
         playNote={playNote}
       />
@@ -20,6 +21,7 @@ const Octave = ({ playNote, oct }) => {
         playNote={playNote}
       />
       <Sharp
+        theme={{ offset: '25.55%' }}
         note={`D#${oct}`}
         playNote={playNote}
       />
@@ -32,6 +34,7 @@ const Octave = ({ playNote, oct }) => {
         playNote={playNote}
       />
       <Sharp
+        theme={{ offset: '53.5%' }}
         note={`F#${oct}`}
         playNote={playNote}
       />
@@ -40,6 +43,7 @@ const Octave = ({ playNote, oct }) => {
         playNote={playNote}
       />
       <Sharp
+        theme={{ offset: '68.5%' }}
         note={`G#${oct}`}
         playNote={playNote}
       />
@@ -48,6 +52,7 @@ const Octave = ({ playNote, oct }) => {
         playNote={playNote}
       />
       <Sharp
+        theme={{ offset: '82.5%' }}
         note={`A#${oct}`}
         playNote={playNote}
       />

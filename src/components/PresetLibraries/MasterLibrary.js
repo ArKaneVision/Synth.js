@@ -1,10 +1,10 @@
 import React from 'react'
 
-const EffectUnit = () => {
+const MasterLibrary = () => {
   return (
     <div>
     </div>
   )
 }
 
-export default EffectUnit
+export default MasterLibrary

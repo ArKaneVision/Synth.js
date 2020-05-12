@@ -4,10 +4,7 @@ import WhiteKey from '../../shared/WhiteKey'
 const Natural = ({ playNote, note }) => {
   return (
     <WhiteKey
-      onClick={() => {
-        console.log('test')
-        playNote(note)
-      }}
+      onClick={() => playNote(note)}
     >
       {note}
     </WhiteKey>

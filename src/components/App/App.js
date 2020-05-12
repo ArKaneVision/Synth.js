@@ -9,6 +9,7 @@ import SignIn from '../Auth/SignIn'
 import SignOut from '../Auth/SignOut'
 import ChangePassword from '../Auth/ChangePassword'
 import SynthBody from '../Synth/SynthBody'
+import MainPage from './MainPage'
 
 class App extends Component {
   constructor () {
@@ -42,7 +43,7 @@ class App extends Component {
             message={msgAlert.message}
           />
         ))}
-        <main>
+        <MainPage>
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
@@ -58,7 +59,7 @@ class App extends Component {
           <Route user={user} path='/synth' render={() => (
             <SynthBody user={user} />
           )} />
-        </main>
+        </MainPage>
       </Fragment>
     )
   }
