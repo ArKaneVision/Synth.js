@@ -1,7 +1,10 @@
 import React from 'react'
 import { Silver } from 'react-dial-knob'
 
-const Evelope = ({ value, setter }) => {
+const Evelope = ({ setPreset, preset, setting }) => {
+  const handleChange = (value) => {
+    setPreset({ ...preset, oscSettings: { ...preset.oscSettings, envelope: { ...preset.oscSettings.envelope, [setting]: value } } })
+  }
   return (
     <div>
       <Silver
@@ -9,11 +12,11 @@ const Evelope = ({ value, setter }) => {
         min={1}
         max={10}
         step={1}
-        value={value}
+        value={preset.oscSettings.envelope[setting]}
         theme={{
           donutColor: 'blue'
         }}
-        onValueChange={setter}
+        onValueChange={handleChange}
         ariaLabelledBy={'my-label'}
       >
         <label id={'my-label'}>Some label</label>

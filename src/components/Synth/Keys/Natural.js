@@ -1,5 +1,5 @@
 import React from 'react'
-import WhiteKey from '../../shared/WhiteKey'
+import WhiteKey from '../../Styles/WhiteKey'
 
 const Natural = ({ playNote, note }) => {
   return (

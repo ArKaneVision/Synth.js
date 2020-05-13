@@ -1,7 +1,7 @@
 import React from 'react'
 import Natural from './Natural'
 import Sharp from './Sharp'
-import Roll from '../../shared/Roll'
+import Roll from '../../Styles/Roll'
 
 const Octave = ({ playNote, oct }) => {
   return (
