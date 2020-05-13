@@ -26,11 +26,6 @@ const SavePreset = ({ preset, setPreset, user }) => {
   }
 
   return (
-  // <PresetForm
-  //   state={state}
-  // handleChange={handleChange}
-  // handleSubmit={handleSubmit}
-  // />
     <div>
       <form onSubmit={handleSubmit}>
         <input

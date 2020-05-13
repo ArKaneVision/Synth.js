@@ -6,6 +6,5 @@ const EvelopeContainer = styled.div`
     height: 100px;
     max-width: 880px;
     position: relative;
-    margin: 40px auto 0;
 `
 export default EvelopeContainer

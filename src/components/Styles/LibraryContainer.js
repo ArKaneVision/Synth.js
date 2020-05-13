@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-const Keyboard = styled.div`
-    display: flex;
-    position: flex-end;
+const LibraryContainer = styled.div`
+    max-height: 300px;
+    overflow: scroll;
 `
-export default Keyboard
+export default LibraryContainer

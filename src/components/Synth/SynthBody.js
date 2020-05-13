@@ -62,12 +62,12 @@ const SynthBody = ({ user }) => {
         <EnvelopeUnit setting='release' setPreset={setPreset} preset={preset} />
       </EvelopeContainer>
       <SavePreset user={user} preset={preset} setPreset={setPreset}/>
+      <UserLibrary />
       <Keyboard>
         <Octave oct='2' playNote={playNote}/>
         <Octave oct='3' playNote={playNote}/>
         <Octave oct='4' playNote={playNote}/>
       </Keyboard>
-      <UserLibrary />
     </div>
     // <EffectContainer>
     // </EffectContainer>
