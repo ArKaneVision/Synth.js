@@ -1,61 +1,66 @@
 import React from 'react'
-import WhiteKey from './WhiteKey'
-import BlackKey from './BlackKey'
+import Natural from './Natural'
+import Sharp from './Sharp'
+import Roll from '../../Styles/Roll'
 
 const Octave = ({ playNote, oct }) => {
   return (
-    <div>
-      {/* 7 white keys */}
-      <WhiteKey
+    <Roll>
+      {/* 12 keys */}
+      <Natural
         note={`C${oct}`}
         playNote={playNote}
       />
-      <WhiteKey
-        note={`D${oct}`}
-        playNote={playNote}
-      />
-      <WhiteKey
-        note={`E${oct}`}
-        playNote={playNote}
-      />
-      <WhiteKey
-        note={`F${oct}`}
-        playNote={playNote}
-      />
-      <WhiteKey
-        note={`G${oct}`}
-        playNote={playNote}
-      />
-      <WhiteKey
-        note={`A${oct}`}
-        playNote={playNote}
-      />
-      <WhiteKey
-        note={`B${oct}`}
-        playNote={playNote}
-      />
-      {/* 5 black keys */}
-      <BlackKey
+      <Sharp
+        theme={{ offset: '11%' }}
         note={`C#${oct}`}
         playNote={playNote}
       />
-      <BlackKey
+      <Natural
+        note={`D${oct}`}
+        playNote={playNote}
+      />
+      <Sharp
+        theme={{ offset: '25.55%' }}
         note={`D#${oct}`}
         playNote={playNote}
       />
-      <BlackKey
+      <Natural
+        note={`E${oct}`}
+        playNote={playNote}
+      />
+      <Natural
+        note={`F${oct}`}
+        playNote={playNote}
+      />
+      <Sharp
+        theme={{ offset: '53.5%' }}
         note={`F#${oct}`}
         playNote={playNote}
       />
-      <BlackKey
+      <Natural
+        note={`G${oct}`}
+        playNote={playNote}
+      />
+      <Sharp
+        theme={{ offset: '68.5%' }}
         note={`G#${oct}`}
         playNote={playNote}
       />
-      <BlackKey
+      <Natural
+        note={`A${oct}`}
+        playNote={playNote}
+      />
+      <Sharp
+        theme={{ offset: '82.5%' }}
         note={`A#${oct}`}
         playNote={playNote}
       />
-    </div>
+      <Natural
+        note={`B${oct}`}
+        playNote={playNote}
+      />
+    </Roll>
   )
 }
 

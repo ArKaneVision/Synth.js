@@ -16,9 +16,13 @@
     "raf": "3.4.0",
     "react": "^16.4.2",
     "react-bootstrap": "^1.0.0-beta.5",
+    "react-dial-knob": "^1.1.5",
     "react-dom": "^16.4.2",
+    "react-midi-hook": "^1.0.1",
     "react-router-dom": "^4.3.1",
+    "react-scrollspy": "^3.4.2",
     "resolve": "1.6.0",
+    "styled-components": "^5.1.0",
     "tone": "^13.8.25",
     "url-loader": "0.6.2"
   },
