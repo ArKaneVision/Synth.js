@@ -7,7 +7,6 @@ const Sharp = ({ playNote, note, theme }) => {
       theme={theme}
       onClick={() => playNote(note)}
     >
-      {note}
     </BlackKey>
   )
 }

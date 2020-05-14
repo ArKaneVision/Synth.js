@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 
 const Roll = styled.div`
-    /* display: block; */
     width: 100%;
-    height: 350px;
+    height: 300px;
     max-width: 880px;
     position: relative;
 `

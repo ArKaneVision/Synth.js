@@ -1,11 +1,9 @@
 import styled from 'styled-components'
 
 const EffectContainer = styled.div`
+    border: solid;
     display: flex;
-    width: 100%;
-    height: 350px;
-    max-width: 880px;
-    position: relative;
-    margin: 40px auto 0;
+    height: 135px;
+    text-align: center;
 `
 export default EffectContainer
