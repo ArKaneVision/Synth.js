@@ -8,7 +8,7 @@ import SignUp from '../Auth/SignUp'
 import SignIn from '../Auth/SignIn'
 import SignOut from '../Auth/SignOut'
 import ChangePassword from '../Auth/ChangePassword'
-import SynthBody from '../Synth/SynthBody'
+import Synthesizer from '../Synth/Synthesizer'
 import MainPage from './MainPage'
 
 class App extends Component {
@@ -57,7 +57,7 @@ class App extends Component {
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
           <Route user={user} path='/synth' render={() => (
-            <SynthBody user={user} />
+            <Synthesizer user={user} />
           )} />
         </MainPage>
       </Fragment>

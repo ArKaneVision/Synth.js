@@ -6,7 +6,6 @@ const Natural = ({ playNote, note }) => {
     <WhiteKey
       onClick={() => playNote(note)}
     >
-      {note}
     </WhiteKey>
   )
 }

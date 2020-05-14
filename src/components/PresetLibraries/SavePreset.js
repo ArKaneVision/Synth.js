@@ -2,11 +2,13 @@ import React from 'react'
 import axios from 'axios'
 
 import apiUrl from '../../apiConfig'
-// import PresetForm from './PresetForm'
+import SaveBox from '../Styles/SaveBox'
 
-const SavePreset = ({ preset, setPreset, user }) => {
+const SavePreset = ({ preset, setPreset, user, setWatcher, watcher }) => {
   const handleSubmit = event => {
     event.preventDefault()
+    setWatcher(watcher + 1)
+    delete preset._id
     axios({
       url: `${apiUrl}/presets`,
       headers: {
@@ -26,32 +28,27 @@ const SavePreset = ({ preset, setPreset, user }) => {
   }
 
   return (
-  // <PresetForm
-  //   state={state}
-  // handleChange={handleChange}
-  // handleSubmit={handleSubmit}
-  // />
-    <div>
+    <SaveBox>
       <form onSubmit={handleSubmit}>
         <input
           name='title'
           placeholder="Title"
           value={preset.title}
           onChange={handleChange}
-        />
+        /><br></br>
         <input
           name='description'
           placeholder="Description"
           value={preset.description}
           onChange={handleChange}
-        />
+        /><br></br>
         <button
           type='submit'
         >
         Save
         </button>
       </form>
-    </div>
+    </SaveBox>
   )
 }
 
