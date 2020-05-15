@@ -5,6 +5,6 @@ const WhiteKey = styled(Key)`
   float: left;
   width: 14.285%;
   height: 100%;
-  background: rgba(255, 255, 255, .8);
+  background: rgba(255, 255, 255);
 `
 export default WhiteKey

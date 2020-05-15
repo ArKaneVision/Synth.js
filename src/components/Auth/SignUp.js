@@ -7,6 +7,8 @@ import messages from '../AutoDismissAlert/messages'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
+import AuthForm from '../Styles/AuthForm'
+
 class SignUp extends Component {
   constructor () {
     super()
@@ -35,7 +37,7 @@ class SignUp extends Component {
         message: messages.signUpSuccess,
         variant: 'success'
       }))
-      .then(() => history.push('/'))
+      .then(() => history.push('/synth'))
       .catch(error => {
         this.setState({ email: '', password: '', passwordConfirmation: '' })
         msgAlert({
@@ -50,8 +52,8 @@ class SignUp extends Component {
     const { email, password, passwordConfirmation } = this.state
 
     return (
-      <div className="row">
-        <div className="col-sm-10 col-md-8 mx-auto mt-5">
+      <AuthForm>
+        <div>
           <h3>Sign Up</h3>
           <Form onSubmit={this.onSignUp}>
             <Form.Group controlId="email">
@@ -95,7 +97,7 @@ class SignUp extends Component {
             </Button>
           </Form>
         </div>
-      </div>
+      </AuthForm>
     )
   }
 }
