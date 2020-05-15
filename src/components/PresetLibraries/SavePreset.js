@@ -3,6 +3,11 @@ import axios from 'axios'
 
 import apiUrl from '../../apiConfig'
 import SaveBox from '../Styles/SaveBox'
+import SaveForm from '../Styles/SaveForm'
+import TitleInput from '../Styles/TitleInput'
+import DescriptionInput from '../Styles/DescriptionInput'
+import SolidButton from '../Styles/SolidButton'
+import SaveButton from '../Styles/SaveButton'
 
 const SavePreset = ({ preset, setPreset, user, setWatcher, watcher }) => {
   const handleSubmit = event => {
@@ -24,30 +29,47 @@ const SavePreset = ({ preset, setPreset, user, setWatcher, watcher }) => {
   const handleChange = event => {
     event.persist()
     setPreset(preset => ({ ...preset, [event.target.name]: event.target.value }))
-    console.log(preset)
+  }
+
+  const updateDescription = (id) => {
+    console.log(id)
+    axios({
+      url: `${apiUrl}/presets/${id}`,
+      headers: {
+        Authorization: 'Token token=' + user.token
+      },
+      method: 'PATCH',
+      data: { description: preset.description }
+    })
+      .then(res => console.log(res))
+      .catch(console.error)
   }
 
   return (
     <SaveBox>
-      <form onSubmit={handleSubmit}>
-        <input
+      <SaveForm onSubmit={handleSubmit}>
+        <TitleInput
+          maxlength='15'
           name='title'
           placeholder="Title"
           value={preset.title}
           onChange={handleChange}
         /><br></br>
-        <input
+        <DescriptionInput
+          maxlength='1'
+          rows={3}
           name='description'
           placeholder="Description"
           value={preset.description}
           onChange={handleChange}
         /><br></br>
-        <button
-          type='submit'
-        >
-        Save
-        </button>
-      </form>
+      </SaveForm>
+      <SaveButton primaryColor='green' secondaryColor="black" onClick={handleSubmit}>
+      Save
+      </SaveButton>
+      <SolidButton primaryColor='green' secondaryColor="black" onClick={() => updateDescription(preset._id)}>
+      Updt Des
+      </SolidButton>
     </SaveBox>
   )
 }

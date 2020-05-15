@@ -1,5 +1,5 @@
 import React from 'react'
-import { White } from 'react-dial-knob'
+import { Silver } from 'react-dial-knob'
 import SettingDisplay from '../../Styles/SettingDisplay'
 import EffectMeter from '../../Styles/EffectMeter'
 import EffectRack from '../../Styles/EffectRack'
@@ -22,7 +22,7 @@ const TripleEffectUnit = ({ mainEffect, scale1, scale2, scale3, effect1, effect2
     <div>
       <EffectRack>
         <EffectMeter>
-          <White
+          <Silver
             diameter={50}
             min={lowRange1}
             max={highRange1}
@@ -37,7 +37,7 @@ const TripleEffectUnit = ({ mainEffect, scale1, scale2, scale3, effect1, effect2
           <SettingDisplay value={preset.effects[mainEffect][effect1]} disabled={true}/>
         </EffectMeter>
         <EffectMeter>
-          <White
+          <Silver
             diameter={50}
             min={lowRange2}
             max={highRange2}
@@ -52,7 +52,7 @@ const TripleEffectUnit = ({ mainEffect, scale1, scale2, scale3, effect1, effect2
           <SettingDisplay value={preset.effects[mainEffect][effect2]} disabled={true}/>
         </EffectMeter>
         <EffectMeter>
-          <White
+          <Silver
             diameter={50}
             min={lowRange3}
             max={highRange3}

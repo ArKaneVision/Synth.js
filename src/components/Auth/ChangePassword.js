@@ -7,6 +7,8 @@ import messages from '../AutoDismissAlert/messages'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
+import AuthForm from '../Styles/AuthForm'
+
 class ChangePassword extends Component {
   constructor () {
     super()
@@ -32,7 +34,7 @@ class ChangePassword extends Component {
         message: messages.changePasswordSuccess,
         variant: 'success'
       }))
-      .then(() => history.push('/'))
+      .then(() => history.push('/synth'))
       .catch(error => {
         this.setState({ oldPassword: '', newPassword: '' })
         msgAlert({
@@ -47,7 +49,7 @@ class ChangePassword extends Component {
     const { oldPassword, newPassword } = this.state
 
     return (
-      <div>
+      <AuthForm>
         <div>
           <h3>Change Password</h3>
           <Form onSubmit={this.onChangePassword}>
@@ -81,7 +83,7 @@ class ChangePassword extends Component {
             </Button>
           </Form>
         </div>
-      </div>
+      </AuthForm>
     )
   }
 }

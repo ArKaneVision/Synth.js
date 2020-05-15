@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import LibraryContainer from '../Styles/LibraryContainer'
 import Table from 'react-bootstrap/Table'
 import axios from 'axios'
+import SolidButton from '../Styles/SolidButton'
 
 import apiUrl from '../../apiConfig'
 
@@ -41,14 +42,14 @@ const UserLibrary = ({ user, setPreset, watcher, setWatcher }) => {
     <tr key={preset._id}>
       <td>{preset.title}</td>
       <td>
-        <button onClick={() => loadPreset(preset._id)}>
+        <SolidButton primaryColor='green' secondaryColor="black" onClick={() => loadPreset(preset._id)}>
           Load
-        </button>
+        </SolidButton>
       </td>
       <td>
-        <button onClick={() => deletePreset(preset._id)}>
+        <SolidButton primaryColor='red' secondaryColor="black" onClick={() => deletePreset(preset._id)}>
           Delete
-        </button>
+        </SolidButton>
       </td>
     </tr>
   ))

@@ -1,7 +1,11 @@
 import styled from 'styled-components'
 
-const LibraryContainer = styled.div`
+const WaveSettings = styled.div`
+    padding: 6px;
+    border-radius: 15px;
+    margin: 10px;
     display: block;
     border: solid;
+    height: 164px
 `
-export default LibraryContainer
+export default WaveSettings

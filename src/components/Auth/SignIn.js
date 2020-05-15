@@ -35,7 +35,7 @@ class SignIn extends Component {
         message: messages.signInSuccess,
         variant: 'success'
       }))
-      .then(() => history.push('/'))
+      .then(() => history.push('/synth'))
       .catch(error => {
         this.setState({ email: '', password: '' })
         msgAlert({

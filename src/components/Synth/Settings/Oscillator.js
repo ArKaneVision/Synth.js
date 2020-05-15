@@ -1,6 +1,8 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 
+// import WaveSelect from '../../Styles/WaveSelect'
+
 const Oscillator = ({ setPreset, preset }) => {
   const handleChange = (event) => {
     console.log(event.target.value)
@@ -12,7 +14,7 @@ const Oscillator = ({ setPreset, preset }) => {
       <Form>
         <Form.Group controlId="exampleForm.SelectCustom">
           <Form.Label>Wave Form</Form.Label>
-          <Form.Control as="select" onChange={handleChange} value={preset.oscSettings.oscillator.modulationType}>
+          <Form.Control as="select" onChange={handleChange} value={preset.oscSettings.oscillator.modulationType} className="WaveSelect">
             <option>sine</option>
             <option>sawtooth</option>
             <option>square</option>

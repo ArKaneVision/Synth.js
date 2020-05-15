@@ -1,5 +1,5 @@
 import React from 'react'
-import { White } from 'react-dial-knob'
+import { Silver } from 'react-dial-knob'
 import SettingDisplay from '../../Styles/SettingDisplay'
 import EffectMeter from '../../Styles/EffectMeter'
 import EffectRack from '../../Styles/EffectRack'
@@ -14,7 +14,7 @@ const EffectUnit = ({ scale, effect, preset, setPreset }) => {
     <div>
       <EffectRack>
         <EffectMeter>
-          <White
+          <Silver
             diameter={50}
             min={0}
             max={10}

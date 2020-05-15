@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 const LibraryContainer = styled.div`
-    overflow: hidden;
     overflow-y: scroll;
     border-bottom: solid;
     width: 100%;

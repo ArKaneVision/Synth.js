@@ -10,6 +10,7 @@ import SignOut from '../Auth/SignOut'
 import ChangePassword from '../Auth/ChangePassword'
 import Synthesizer from '../Synth/Synthesizer'
 import MainPage from './MainPage'
+import LandingPage from './LandingPage'
 
 class App extends Component {
   constructor () {
@@ -44,6 +45,9 @@ class App extends Component {
           />
         ))}
         <MainPage>
+          <Route exact path='/' render={() => (
+            <LandingPage />
+          )} />
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />

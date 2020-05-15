@@ -5,7 +5,7 @@ const Sharp = ({ playNote, note, theme }) => {
   return (
     <BlackKey
       theme={theme}
-      onClick={() => playNote(note)}
+      onMouseDown={() => playNote(note)}
     >
     </BlackKey>
   )

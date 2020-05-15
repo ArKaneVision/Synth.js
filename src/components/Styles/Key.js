@@ -9,5 +9,10 @@ const Key = styled.div`
     box-sizing: border-box;
     z-index: 2;
     text-align: flex-end;
+
+    transition: background-color .01s linear;
+    &:active {
+    background-color: blue;
+  }
 `
 export default Key
