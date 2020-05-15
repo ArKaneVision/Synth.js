@@ -1,9 +1,10 @@
 import React from 'react'
-import { Silver } from 'react-dial-knob'
+import { Silver, Basic } from 'react-dial-knob'
 import SettingDisplay from '../../Styles/SettingDisplay'
 import EffectMeter from '../../Styles/EffectMeter'
 import EffectRack from '../../Styles/EffectRack'
 import EffectLabel from '../../Styles/EffectLabel'
+import WetDryBox from '../../Styles/WetDryBox'
 
 const TripleEffectUnit = ({ mainEffect, scale1, scale2, scale3, effect1, effect2, effect3, preset, setPreset, highRange1, lowRange1, highRange2, lowRange2, highRange3, lowRange3 }) => {
   const handleChange1 = (value) => {
@@ -17,6 +18,10 @@ const TripleEffectUnit = ({ mainEffect, scale1, scale2, scale3, effect1, effect2
   const handleChange3 = (value) => {
     const newValue = (value / scale3)
     setPreset({ ...preset, effects: { ...preset.effects, [mainEffect]: { ...preset.effects[mainEffect], [effect3]: newValue } } })
+  }
+  const changeWetDry = (value) => {
+    const newValue = (value / 10)
+    setPreset({ ...preset, effects: { ...preset.effects, [mainEffect]: { ...preset.effects[mainEffect], wetDry: newValue } } })
   }
   return (
     <div>
@@ -66,6 +71,21 @@ const TripleEffectUnit = ({ mainEffect, scale1, scale2, scale3, effect1, effect2
           />
           <SettingDisplay value={preset.effects[mainEffect][effect3]} disabled={true}/>
         </EffectMeter>
+        <WetDryBox>
+          <Basic
+            diameter={50}
+            min={0}
+            max={10}
+            step={1}
+            value={Math.floor(preset.effects[mainEffect].wetDry * 10)}
+            theme={{
+              donutColor: 'blue'
+            }}
+            onValueChange={changeWetDry}
+            ariaLabelledBy={'my-label'}
+          />
+          <EffectLabel>w / d</EffectLabel>
+        </WetDryBox>
       </EffectRack>
       <EffectLabel>{effect1} / {effect2} / {effect3}</EffectLabel><br></br>
       <EffectLabel>{mainEffect}</EffectLabel>

@@ -46,16 +46,19 @@ const Synthesizer = ({ user }) => {
       distortion: 0,
       freeverb: {
         roomSize: 0.1,
-        dampning: 1000
+        dampning: 1000,
+        wetDry: 0
       },
       phaser: {
         frequency: 1,
         octaves: 0,
-        baseFrequency: 1
+        baseFrequency: 1,
+        wetDry: 0
       },
       pingPong: {
         delayTime: 1,
-        feedBack: 1
+        feedBack: 0.1,
+        wetDry: 0
       }
     },
     master: {
@@ -76,11 +79,14 @@ const Synthesizer = ({ user }) => {
   // })
 
   function playNote (noteToTrigger) {
-    console.log(preset)
+    console.log(user)
     Tone.context.lookAhead = 0
-    const pingPong = new Tone.PingPongDelay()
+    const pingPong = new Tone.PingPongDelay(preset.effects.pingPong.delayTime, preset.effects.pingPong.feedBack)
+    pingPong.wet.value = preset.effects.pingPong.wetDry
     const freeverb = new Tone.Freeverb(preset.effects.freeverb.roomSize, preset.effects.freeverb.dampning)
+    freeverb.wet.value = preset.effects.freeverb.wetDry
     const phase = new Tone.Phaser(preset.effects.phaser.frequency, preset.effects.phaser.octaves, preset.effects.phaser.baseFrequency)
+    phase.wet.value = preset.effects.phaser.wetDry
     const dist = new Tone.Distortion(preset.effects.distortion)
     const synth = new Synth(preset.oscSettings).chain(dist, phase, freeverb, pingPong, Tone.Master)
     synth.triggerAttackRelease(noteToTrigger, preset.master.noteLength)

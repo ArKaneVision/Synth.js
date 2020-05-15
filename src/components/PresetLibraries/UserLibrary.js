@@ -38,21 +38,25 @@ const UserLibrary = ({ user, setPreset, watcher, setWatcher }) => {
     })
   }
 
-  const presetsJsx = presets.map(preset => (
-    <tr key={preset._id}>
-      <td>{preset.title}</td>
-      <td>
-        <SolidButton primaryColor='green' secondaryColor="black" onClick={() => loadPreset(preset._id)}>
+  const presetsJsx = presets.map(preset => {
+    console.log(preset)
+    console.log(user)
+    if (preset.owner === user._id) {
+      return (<tr key={preset._id}>
+        <td>{preset.title}</td>
+        <td>
+          <SolidButton primaryColor='green' secondaryColor="black" onClick={() => loadPreset(preset._id)}>
           Load
-        </SolidButton>
-      </td>
-      <td>
-        <SolidButton primaryColor='red' secondaryColor="black" onClick={() => deletePreset(preset._id)}>
+          </SolidButton>
+        </td>
+        <td>
+          <SolidButton primaryColor='red' secondaryColor="black" onClick={() => deletePreset(preset._id)}>
           Delete
-        </SolidButton>
-      </td>
-    </tr>
-  ))
+          </SolidButton>
+        </td>
+      </tr>)
+    }
+  })
 
   return (
     <LibraryContainer>
