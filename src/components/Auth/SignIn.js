@@ -9,6 +9,13 @@ import Button from 'react-bootstrap/Button'
 
 import AuthForm from '../Styles/AuthForm'
 
+const formStyle = {
+  maxWidth: '250px',
+  background: 'black',
+  borderRadius: '7px',
+  textAlign: 'center'
+}
+
 class SignIn extends Component {
   constructor () {
     super()
@@ -27,6 +34,7 @@ class SignIn extends Component {
     event.preventDefault()
 
     const { msgAlert, history, setUser } = this.props
+    console.log(this)
 
     signIn(this.state)
       .then(res => setUser(res.data.user))
@@ -57,6 +65,7 @@ class SignIn extends Component {
             <Form.Group controlId="email">
               <Form.Label>Email address</Form.Label>
               <Form.Control
+                style={formStyle}
                 required
                 type="email"
                 name="email"
@@ -68,6 +77,7 @@ class SignIn extends Component {
             <Form.Group controlId="password">
               <Form.Label>Password</Form.Label>
               <Form.Control
+                style={formStyle}
                 required
                 name="password"
                 value={password}

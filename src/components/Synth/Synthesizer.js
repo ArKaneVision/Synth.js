@@ -23,7 +23,7 @@ import WaveSettings from '../Styles/WaveSettings'
 // tone.js
 import Tone, { Synth } from 'tone'
 
-const Synthesizer = ({ user }) => {
+const Synthesizer = ({ user, msgAlert }) => {
   // const { pressedKeys } = useMidi()
   const [watcher, setWatcher] = useState(0)
   const [preset, setPreset] = useState({
@@ -144,8 +144,8 @@ const Synthesizer = ({ user }) => {
         </SynthSettings>
 
         <ApiContainer>
-          <UserLibrary watcher={watcher} setWatcher={setWatcher} user={user} setPreset={setPreset}/>
-          <SavePreset watcher={watcher} setWatcher={setWatcher} user={user} preset={preset} setPreset={setPreset}/>
+          <UserLibrary watcher={watcher} setWatcher={setWatcher} msgAlert={msgAlert} user={user} setPreset={setPreset}/>
+          <SavePreset watcher={watcher} setWatcher={setWatcher} msgAlert={msgAlert} user={user} preset={preset} setPreset={setPreset}/>
         </ApiContainer>
       </ControlBoard>
 

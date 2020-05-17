@@ -6,7 +6,7 @@ import SolidButton from '../Styles/SolidButton'
 
 import apiUrl from '../../apiConfig'
 
-const UserLibrary = ({ user, setPreset, watcher, setWatcher }) => {
+const UserLibrary = ({ user, setPreset, watcher, setWatcher, msgAlert }) => {
   const [presets, setPresets] = useState([])
 
   useEffect(() => {
@@ -23,12 +23,21 @@ const UserLibrary = ({ user, setPreset, watcher, setWatcher }) => {
       },
       method: 'GET'
     })
-      .then(res => setPreset(res.data.preset))
-      .catch(console.error)
+      .then(() => msgAlert({
+        heading: 'Load Preset Success',
+        message: 'Your settings have been adjusted',
+        variant: 'success'
+      }))
+      .catch(error => {
+        msgAlert({
+          heading: 'Failed to Load Preset with error: ' + error.message,
+          message: '',
+          variant: 'danger'
+        })
+      })
   }
 
   const deletePreset = (id) => {
-    setWatcher(watcher + 1)
     axios({
       url: `${apiUrl}/presets/${id}`,
       headers: {
@@ -36,26 +45,30 @@ const UserLibrary = ({ user, setPreset, watcher, setWatcher }) => {
       },
       method: 'DELETE'
     })
+      .then(() => msgAlert({
+        heading: 'Preset Deleted',
+        message: '',
+        variant: 'warning'
+      }))
+      .then(setWatcher(watcher + 1))
   }
 
   const presetsJsx = presets.map(preset => {
-    console.log(preset)
-    console.log(user)
-    if (preset.owner === user._id) {
-      return (<tr key={preset._id}>
-        <td>{preset.title}</td>
-        <td>
-          <SolidButton primaryColor='green' secondaryColor="black" onClick={() => loadPreset(preset._id)}>
-          Load
-          </SolidButton>
-        </td>
-        <td>
-          <SolidButton primaryColor='red' secondaryColor="black" onClick={() => deletePreset(preset._id)}>
-          Delete
-          </SolidButton>
-        </td>
-      </tr>)
-    }
+    // if (preset.owner === user._id) {
+    return (<tr key={preset._id}>
+      <td>{preset.title}</td>
+      <td>
+        <SolidButton primaryColor='green' secondaryColor="black" onClick={() => loadPreset(preset._id)}>
+        Load
+        </SolidButton>
+      </td>
+      <td>
+        <SolidButton primaryColor='red' secondaryColor="black" onClick={() => deletePreset(preset._id)}>
+        Delete
+        </SolidButton>
+      </td>
+    </tr>)
+    // }
   })
 
   return (

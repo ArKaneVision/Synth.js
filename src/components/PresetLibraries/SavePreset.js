@@ -9,7 +9,7 @@ import DescriptionInput from '../Styles/DescriptionInput'
 import SolidButton from '../Styles/SolidButton'
 import SaveButton from '../Styles/SaveButton'
 
-const SavePreset = ({ preset, setPreset, user, setWatcher, watcher }) => {
+const SavePreset = ({ preset, setPreset, user, setWatcher, watcher, msgAlert }) => {
   const handleSubmit = event => {
     event.preventDefault()
     setWatcher(watcher + 1)
@@ -22,8 +22,22 @@ const SavePreset = ({ preset, setPreset, user, setWatcher, watcher }) => {
       method: 'POST',
       data: { preset }
     })
-      .then(res => console.log(res))
-      .catch(console.error)
+      .then(() => {
+        msgAlert({
+          heading: 'Save Preset Success',
+          message: `The synth patch ${preset.title}: has been saved `,
+          variant: 'success'
+        })
+        setPreset({ ...preset, title: '', description: '' })
+      })
+      .then(setWatcher(watcher + 1))
+      .catch(error => {
+        msgAlert({
+          heading: 'Failed to Save Preset With Error: ' + error.message,
+          message: 'Make sure to fill out all forms',
+          variant: 'danger'
+        })
+      })
   }
 
   const handleChange = event => {
@@ -32,7 +46,6 @@ const SavePreset = ({ preset, setPreset, user, setWatcher, watcher }) => {
   }
 
   const updateDescription = (id) => {
-    console.log(id)
     axios({
       url: `${apiUrl}/presets/${id}`,
       headers: {
@@ -41,8 +54,19 @@ const SavePreset = ({ preset, setPreset, user, setWatcher, watcher }) => {
       method: 'PATCH',
       data: { description: preset.description }
     })
-      .then(res => console.log(res))
-      .catch(console.error)
+      .then(() => msgAlert({
+        heading: 'Update Description Success',
+        message: 'Success',
+        variant: 'success'
+      }))
+      .catch(error => {
+        setPreset({ ...preset, description: '' })
+        msgAlert({
+          heading: 'Sign In Failed with error: ' + error.message,
+          message: 'failure',
+          variant: 'danger'
+        })
+      })
   }
 
   return (
