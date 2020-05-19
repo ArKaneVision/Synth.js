@@ -57,8 +57,6 @@
 [Planning Document](https://docs.google.com/document/d/1Lpu7xGPGewcD81nZDs1sDgiIkiri81QBTZC-17bJXMs/edit)
 
 ## Moving Forward
-
-  Next steps on this app:
     * Improve Sound generation to remove hicups
     * Give access to master library where users can share patches
     * Add additional effects
