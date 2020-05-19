@@ -34,7 +34,6 @@ class SignIn extends Component {
     event.preventDefault()
 
     const { msgAlert, history, setUser } = this.props
-    console.log(this)
 
     signIn(this.state)
       .then(res => setUser(res.data.user))

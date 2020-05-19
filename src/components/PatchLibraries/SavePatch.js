@@ -9,31 +9,32 @@ import DescriptionInput from '../Styles/DescriptionInput'
 import SolidButton from '../Styles/SolidButton'
 import SaveButton from '../Styles/SaveButton'
 
-const SavePreset = ({ preset, setPreset, user, setWatcher, watcher, msgAlert }) => {
+const SavePatch = ({ patch, setPatch, user, setWatcher, watcher, msgAlert }) => {
   const handleSubmit = event => {
     event.preventDefault()
-    setWatcher(watcher + 1)
-    delete preset._id
+    delete patch._id
     axios({
-      url: `${apiUrl}/presets`,
+      url: `${apiUrl}/patches`,
       headers: {
         Authorization: 'Token token=' + user.token
       },
       method: 'POST',
-      data: { preset }
+      data: { patch }
     })
       .then(() => {
         msgAlert({
-          heading: 'Save Preset Success',
-          message: `The synth patch ${preset.title}: has been saved `,
+          heading: 'Save Patch Success',
+          message: `The synth patch ${patch.title}: has been saved `,
           variant: 'success'
         })
-        setPreset({ ...preset, title: '', description: '' })
+        setPatch({ ...patch, title: '', description: '' })
       })
-      .then(setWatcher(watcher + 1))
+      .then(() => {
+        setWatcher(watcher + 1)
+      })
       .catch(error => {
         msgAlert({
-          heading: 'Failed to Save Preset With Error: ' + error.message,
+          heading: 'Failed to Save Patch With Error: ' + error.message,
           message: 'Make sure to fill out all forms',
           variant: 'danger'
         })
@@ -42,17 +43,17 @@ const SavePreset = ({ preset, setPreset, user, setWatcher, watcher, msgAlert }) 
 
   const handleChange = event => {
     event.persist()
-    setPreset(preset => ({ ...preset, [event.target.name]: event.target.value }))
+    setPatch(patch => ({ ...patch, [event.target.name]: event.target.value }))
   }
 
   const updateDescription = (id) => {
     axios({
-      url: `${apiUrl}/presets/${id}`,
+      url: `${apiUrl}/patches/${id}`,
       headers: {
         Authorization: 'Token token=' + user.token
       },
       method: 'PATCH',
-      data: { description: preset.description }
+      data: { description: patch.description }
     })
       .then(() => msgAlert({
         heading: 'Update Description Success',
@@ -60,7 +61,7 @@ const SavePreset = ({ preset, setPreset, user, setWatcher, watcher, msgAlert }) 
         variant: 'success'
       }))
       .catch(error => {
-        setPreset({ ...preset, description: '' })
+        setPatch({ ...patch, description: '' })
         msgAlert({
           heading: 'Sign In Failed with error: ' + error.message,
           message: 'failure',
@@ -77,7 +78,7 @@ const SavePreset = ({ preset, setPreset, user, setWatcher, watcher, msgAlert }) 
           maxlength='15'
           name='title'
           placeholder="Title"
-          value={preset.title}
+          value={patch.title}
           onChange={handleChange}
         /><br></br>
         <DescriptionInput
@@ -85,18 +86,18 @@ const SavePreset = ({ preset, setPreset, user, setWatcher, watcher, msgAlert }) 
           rows={3}
           name='description'
           placeholder="Description"
-          value={preset.description}
+          value={patch.description}
           onChange={handleChange}
         /><br></br>
       </SaveForm>
       <SaveButton primaryColor='green' secondaryColor="black" onClick={handleSubmit}>
       Save
       </SaveButton>
-      <SolidButton primaryColor='green' secondaryColor="black" onClick={() => updateDescription(preset._id)}>
+      <SolidButton primaryColor='green' secondaryColor="black" onClick={() => updateDescription(patch._id)}>
       Updt Des
       </SolidButton>
     </SaveBox>
   )
 }
 
-export default SavePreset
+export default SavePatch

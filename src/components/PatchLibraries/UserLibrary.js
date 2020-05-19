@@ -6,64 +6,70 @@ import SolidButton from '../Styles/SolidButton'
 
 import apiUrl from '../../apiConfig'
 
-const UserLibrary = ({ user, setPreset, watcher, setWatcher, msgAlert }) => {
-  const [presets, setPresets] = useState([])
+const UserLibrary = ({ user, setPatch, watcher, setWatcher, msgAlert }) => {
+  const [patches, setPatchs] = useState([])
 
   useEffect(() => {
-    axios(`${apiUrl}/presets`)
-      .then(res => setPresets(res.data.presets))
+    axios(`${apiUrl}/patches`)
+      .then(res => setPatchs(res.data.patches))
       .catch(console.error)
   }, [watcher])
 
-  const loadPreset = (id) => {
+  const loadPatch = (id) => {
     axios({
-      url: `${apiUrl}/presets/${id}`,
+      url: `${apiUrl}/patches/${id}`,
       headers: {
         Authorization: 'Token token=' + user.token
       },
       method: 'GET'
     })
+      .then(res => setPatch(res.data.patch))
       .then(() => msgAlert({
-        heading: 'Load Preset Success',
+        heading: 'Load Patch Success',
         message: 'Your settings have been adjusted',
         variant: 'success'
       }))
+      .then(() => {
+        setWatcher(watcher + 1)
+      })
       .catch(error => {
         msgAlert({
-          heading: 'Failed to Load Preset with error: ' + error.message,
+          heading: 'Failed to Load Patch with error: ' + error.message,
           message: '',
           variant: 'danger'
         })
       })
   }
 
-  const deletePreset = (id) => {
+  const deletePatch = (id) => {
     axios({
-      url: `${apiUrl}/presets/${id}`,
+      url: `${apiUrl}/patches/${id}`,
       headers: {
         Authorization: 'Token token=' + user.token
       },
       method: 'DELETE'
     })
       .then(() => msgAlert({
-        heading: 'Preset Deleted',
+        heading: 'Patch Deleted',
         message: '',
         variant: 'warning'
       }))
-      .then(setWatcher(watcher + 1))
+      .then(() => {
+        setWatcher(watcher + 1)
+      })
   }
 
-  const presetsJsx = presets.map(preset => {
-    // if (preset.owner === user._id) {
-    return (<tr key={preset._id}>
-      <td>{preset.title}</td>
+  const patchesJsx = patches.map(patch => {
+    // if (patch.owner === user._id) {
+    return (<tr key={patch._id}>
+      <td>{patch.title}</td>
       <td>
-        <SolidButton primaryColor='green' secondaryColor="black" onClick={() => loadPreset(preset._id)}>
+        <SolidButton primaryColor='green' secondaryColor="black" onClick={() => loadPatch(patch._id)}>
         Load
         </SolidButton>
       </td>
       <td>
-        <SolidButton primaryColor='red' secondaryColor="black" onClick={() => deletePreset(preset._id)}>
+        <SolidButton primaryColor='red' secondaryColor="black" onClick={() => deletePatch(patch._id)}>
         Delete
         </SolidButton>
       </td>
@@ -83,7 +89,7 @@ const UserLibrary = ({ user, setPreset, watcher, setWatcher, msgAlert }) => {
             </tr>
           </thead>
           <tbody>
-            {presetsJsx}
+            {patchesJsx}
           </tbody>
         </Table>
       </div>
