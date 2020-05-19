@@ -61,7 +61,7 @@ class App extends Component {
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
           <Route user={user} path='/synth' render={() => (
-            <Synthesizer user={user} />
+            <Synthesizer msgAlert={this.msgAlert} user={user} />
           )} />
         </MainPage>
       </Fragment>

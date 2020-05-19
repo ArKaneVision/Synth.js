@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form'
 
 // import WaveSelect from '../../Styles/WaveSelect'
 
-const Oscillator = ({ setPreset, preset }) => {
+const Oscillator = ({ setPatch, patch }) => {
   const formStyle = {
     height: '30px',
     padding: '0',
@@ -13,15 +13,15 @@ const Oscillator = ({ setPreset, preset }) => {
   }
   const handleChange = (event) => {
     console.log(event.target.value)
-    setPreset({ ...preset, oscSettings: { ...preset.oscSettings, oscillator: { ...preset.oscSettings.oscillator, type: event.target.value } } })
-    console.log(preset)
+    setPatch({ ...patch, oscSettings: { ...patch.oscSettings, oscillator: { ...patch.oscSettings.oscillator, type: event.target.value } } })
+    console.log(patch)
   }
   return (
     <div>
       <Form>
         <Form.Group controlId="exampleForm.SelectCustom">
           <Form.Label>Wave Form</Form.Label>
-          <Form.Control as="select" onChange={handleChange} value={preset.oscSettings.oscillator.modulationType} style={formStyle}>
+          <Form.Control as="select" onChange={handleChange} value={patch.oscSettings.oscillator.modulationType} style={formStyle}>
             <option>sine</option>
             <option>sawtooth</option>
             <option>square</option>

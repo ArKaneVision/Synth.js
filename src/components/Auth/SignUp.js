@@ -9,6 +9,13 @@ import Button from 'react-bootstrap/Button'
 
 import AuthForm from '../Styles/AuthForm'
 
+const formStyle = {
+  maxWidth: '250px',
+  background: 'black',
+  borderRadius: '7px',
+  textAlign: 'center'
+}
+
 class SignUp extends Component {
   constructor () {
     super()
@@ -59,6 +66,7 @@ class SignUp extends Component {
             <Form.Group controlId="email">
               <Form.Label>Email address</Form.Label>
               <Form.Control
+                style={formStyle}
                 required
                 type="email"
                 name="email"
@@ -70,6 +78,7 @@ class SignUp extends Component {
             <Form.Group controlId="password">
               <Form.Label>Password</Form.Label>
               <Form.Control
+                style={formStyle}
                 required
                 name="password"
                 value={password}
@@ -81,6 +90,7 @@ class SignUp extends Component {
             <Form.Group controlId="passwordConfirmation">
               <Form.Label>Password Confirmation</Form.Label>
               <Form.Control
+                style={formStyle}
                 required
                 name="passwordConfirmation"
                 value={passwordConfirmation}
